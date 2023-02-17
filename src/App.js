@@ -1,21 +1,22 @@
-//import { connect } from 'react-redux'
-import {BrowserRouter as Router,Routes,Route} from 'react-router-dom'
-//views
-import * as Views from './views/index.js';
-
+import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom'
+import MainThemeProvider from './components/providers/ThemeProvider.js';
+import { BaseLayout, MinimalLayout } from './components/layout/index.js';
+import { baseLayoutRoutes, minimalLayoutRoutes } from './utils/layoutRoutes.js';
 function App() {
+
   return (
-    <Router>
-      <Routes>
-        <Route path='/' element={<Views.Home/>}/>
-        <Route path='/register' element={<Views.Register/>}/>
-        <Route path='/login' element={<Views.Login/>}/>
-        <Route path='/checkout' element={<Views.Checkout/>}/>
-        <Route path='/products' element={<Views.Products/>}/>
-        <Route path='/cart' element={<Views.Cart/>}/>
-        <Route path='*' element={<Views.NotFound/>}/>
-      </Routes>
-    </Router>
+    <MainThemeProvider>
+      <Router>
+        <Routes>
+          <Route element={<BaseLayout />}>
+            {baseLayoutRoutes}
+          </Route>
+          <Route element={<MinimalLayout />}>
+            {minimalLayoutRoutes}
+          </Route>
+        </Routes>
+      </Router>
+    </MainThemeProvider>
   );
 }
 
