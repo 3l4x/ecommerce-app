@@ -1,4 +1,4 @@
-import { Home, Register, Login, Checkout, NotFound, Products } from '../views/index.js';
+import { Home, Register, Login, Checkout, NotFound, Products,Cart } from '../views/index.js';
 
 
 export const STORE_NAME = 'Ecommerce app'
@@ -24,6 +24,11 @@ export const routes = [
       path: '/checkout',
       view: Checkout,
       layoutType: 'minimal',
+    },
+    {
+      path: '/cart',
+      view: Cart,
+      layoutType: 'base',
     },
     {
       path: '/products',
