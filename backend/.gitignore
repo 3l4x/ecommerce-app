@@ -1,6 +1,13 @@
+#todo
+todo.txt
+
 # Logs
 logs
 *.log
+
+
+# db
+/db
 
 # Runtime data
 pids
@@ -10,6 +17,9 @@ pids
 
 # Build files
 dist
+
+# Config files
+config/config.json
 
 # Dependency directories
 node_modules
