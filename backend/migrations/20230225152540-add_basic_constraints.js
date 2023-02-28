@@ -95,6 +95,7 @@ module.exports = {
   },
 
   async down(queryInterface, _) {
+    //! this needs fix :/
     logger([
       () => queryInterface.removeConstraint('subcategories', 'subcategories_categoryId_fkey'),
       () => queryInterface.removeConstraint('products', 'products_subcategoryId_fkey'),

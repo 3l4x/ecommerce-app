@@ -1,6 +1,6 @@
 'use strict';
 
-const logger = require('../utils/logger');
+const { logger } = require('../utils/logger');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -35,6 +35,7 @@ module.exports = {
   },
 
   async down(queryInterface, _) {
+    //! this needs fix :/
     logger([
       () => queryInterface.removeIndex('subcategories', {
         fields: ['categoryId'],
