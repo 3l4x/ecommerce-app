@@ -3,18 +3,22 @@ const app = express();
 
 
 //middlewares
+
 app.use(express.json());
+
+//
+
+
 
 
 //routes
-const userRouter = require('./routers/userRouter');
+const authRouter = require('./routers/authRouter');
 
 
-
-app.use('/user', userRouter);
-
+app.use('/auth', authRouter);
 
 
+//
 
 
 
