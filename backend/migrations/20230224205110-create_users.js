@@ -45,6 +45,14 @@ module.exports = {
       phoneNumber: {
         type: DataTypes.STRING(20),
       },
+      createdAt: {
+        type: DataTypes.DATE,
+        allowNull : false,
+      },
+      updatedAt: {
+        type: DataTypes.DATE,
+        allowNull : false,
+      }
     })
   },
 
