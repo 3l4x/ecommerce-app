@@ -1,12 +1,10 @@
 const { Model } = require('sequelize');
-
-
-module.exports = (sequelize,DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     class Purchase extends Model {
 
-        static associate(models){
+        static associate(models) {
             this.belongsTo(models.User);
-            this.hasMany(models.PurchaseItems);
+            this.hasMany(models.PurchaseItem);
         }
     }
     Purchase.init({
@@ -16,9 +14,12 @@ module.exports = (sequelize,DataTypes) => {
             defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
         },
         price_total: {
-            type  : DataTypes.DECIMAL(10,3),
-            allowNull  : false
+            type: DataTypes.DECIMAL(10, 3),
+            allowNull: false
         },
+    }, {
+        sequelize,
+        modelName: 'Purchase'
     })
     return Purchase;
 }

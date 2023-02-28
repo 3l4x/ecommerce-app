@@ -1,23 +1,25 @@
 const { Model } = require('sequelize');
-
-
-module.exports = (sequelize,DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     class PurchaseItem extends Model {
 
-        static associate(models){
-            this.belongsTo([models.Purchase,models.Product]);
+        static associate(models) {
+            this.belongsTo(models.Purchase);
+            this.belongsTo(models.Product);
         }
     }
     PurchaseItem.init({
         purchase_price: {
-            type  : DataTypes.DECIMAL(10,3),
-            allowNull  : false
+            type: DataTypes.DECIMAL(10, 3),
+            allowNull: false
         },
         quantity: {
-            type  : DataTypes.INTEGER,
-            allowNull  : false
+            type: DataTypes.INTEGER,
+            allowNull: false
         }
-    })
+    }, {
+        sequelize,
+        modelName: 'PurchaseItem'
+    });
     return PurchaseItem;
 }
 

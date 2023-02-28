@@ -1,17 +1,16 @@
 const { Model } = require('sequelize');
-
-
-module.exports = (sequelize,DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     class Review extends Model {
 
-        static associate(models){
-            this.belongsTo([models.User,models.Product]);
+        static associate(models) {
+            this.belongsTo(models.User);
+            this.belongsTo(models.Product);
         }
     }
     Review.init({
         rating: {
             type: DataTypes.INTEGER,
-            allowNull : false
+            allowNull: false
         },
         date: {
             type: DataTypes.DATE,
@@ -20,6 +19,9 @@ module.exports = (sequelize,DataTypes) => {
         reviewBody: {
             type: DataTypes.TEXT,
         }
+    }, {
+        sequelize,
+        modelName: 'Review'
     })
     return Review;
 }

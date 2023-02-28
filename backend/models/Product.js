@@ -1,22 +1,26 @@
-const TitledBaseModel = require('./TitledBaseModel');
-
-
+const { Model } = require('sequelize')
 module.exports = (sequelize, DataTypes) => {
-  class Product extends TitledBaseModel {
-
+  class Product extends Model {
     static associate(models) {
       this.belongsTo(models.Subcategory);
-      this.hasMany([models.PurchaseItem, models.Review]);
+      this.hasMany(models.PurchaseItem);
+      this.hasMany(models.Review);
     }
   }
   Product.init({
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: DataTypes.STRING,
+    imgPath: DataTypes.STRING,
     price: {
-      type  : DataTypes.DECIMAL(10,3),
-      allowNull  : false
+      type: DataTypes.DECIMAL(10, 3),
+      allowNull: false
     },
     stock: {
-      type  : DataTypes.INTEGER,
-      allowNull  : false
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
   }, {
     sequelize,
