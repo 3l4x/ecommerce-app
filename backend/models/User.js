@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
         len: {
           args: [1, 50]
         },
-        is: /^\p{L}[\p{L}\s\p{Pd}\'-]*$/
+        is: /^\p{L}[\p{L}\s\p{Pd}\\'-]*$/u
       }
     },
     firstName: {
@@ -58,7 +58,7 @@ module.exports = (sequelize, DataTypes) => {
         len: {
           args: [1, 50]
         },
-        is: /^\p{L}[\p{L}\s\p{Pd}\'-]*$/
+        is: /^\p{L}[\p{L}\s\p{Pd}\\'-]*$/u
       }
     },
     password: {
@@ -78,7 +78,7 @@ module.exports = (sequelize, DataTypes) => {
         len: {
           args: [1, 100]
         },
-        is: /^\p{L}[\p{L}\s\p{Pd}\'-]*$/
+        is: /^\p{L}[\p{L}\s\p{Pd}\\'-]*$/u
       }
     },
     state: {
@@ -87,7 +87,7 @@ module.exports = (sequelize, DataTypes) => {
         len: {
           args: [1, 100]
         },
-        is: /^\p{L}[\p{L}\s\p{Pd}\'-]*$/
+        is: /^\p{L}[\p{L}\s\p{Pd}\\'-]*$/u
       }
     },
     zip: {
@@ -96,7 +96,7 @@ module.exports = (sequelize, DataTypes) => {
         len: {
           args: [1, 20]
         },
-        is: /^\d+(\d|-)*\d$/
+        is: /^\d+(\d|-|\s)*\d$/
       }
     },
     city: {
@@ -105,7 +105,7 @@ module.exports = (sequelize, DataTypes) => {
         len: {
           args: [1, 100]
         },
-        is: /^\p{L}[\p{L}\s\p{Pd}\'-]*$/,
+        is: /^\p{L}[\p{L}\s\p{Pd}\\'-]*$/u
       }
     },
     address1: {
@@ -114,7 +114,7 @@ module.exports = (sequelize, DataTypes) => {
         len: {
           args: [1, 100]
         },
-        is: /^(\p{L}|\d)[\d\p{L}\s\p{Pd}\'\-\/#,.]*$/
+        is: /^(\p{L}|\d)[\d\p{L}\s\p{Pd}\\'\-\\/#,.]*$/u
       }
     },
     address2: {
@@ -123,7 +123,7 @@ module.exports = (sequelize, DataTypes) => {
         len: {
           args: [1, 100]
         },
-        is: /^(\p{L}|\d)[\d\p{L}\s\p{Pd}\'\-\/#,.]*$/
+        is: /^(\p{L}|\d)[\d\p{L}\s\p{Pd}\\'\-\\/#,.]*$/u
       }
     },
     phoneNumber: {
@@ -132,7 +132,7 @@ module.exports = (sequelize, DataTypes) => {
         len: {
           args: [1, 20]
         },
-        is: /^\+\d[\d\s\-)(]+$/,
+        is: /^\\+\d[\d\s\\-\\)\\(]+$/,
       }
     },
   }, {
