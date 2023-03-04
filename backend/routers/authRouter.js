@@ -3,7 +3,7 @@ const router = express.Router();
 const authController = require('../controllers/authController');
 
 const { validateReqBody, verifyJwtToken, checkJwtBlacklist } = require('../middlewares');
-const { loginSchema, registerSchema } = require('../schemas/userSchema');
+const { loginSchema, registerSchema } = require('../schemas/userValidation');
 
 router
     .post('/register', validateReqBody(registerSchema), authController.register)
