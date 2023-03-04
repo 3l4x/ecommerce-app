@@ -8,7 +8,7 @@ module.exports = {
     await queryInterface.addConstraint('subcategories', {
       name: 'subcategories_categoryId_fkey',
       type: 'foreign key',
-      fields: ['categoryId'],
+      fields: ['CategoryId'],
       references: {
         table: 'categories',
         field: 'id',
@@ -20,7 +20,7 @@ module.exports = {
     await queryInterface.addConstraint('products', {
       name: 'products_subcategoryId_fkey',
       type: 'foreign key',
-      fields: ['subcategoryId'],
+      fields: ['SubcategoryId'],
       references: {
         table: 'subcategories',
         field: 'id'
@@ -32,7 +32,7 @@ module.exports = {
     await queryInterface.addConstraint('reviews', {
       name: 'reviews_userId_fkey',
       type: 'foreign key',
-      fields: ['userId'],
+      fields: ['UserId'],
       references: {
         table: 'users',
         field: 'id',
@@ -43,7 +43,7 @@ module.exports = {
     await queryInterface.addConstraint('reviews', {
       name: 'reviews_productId_fkey',
       type: 'foreign key',
-      fields: ['productId'],
+      fields: ['ProductId'],
       references: {
         table: 'products',
         field: 'id',
@@ -55,14 +55,14 @@ module.exports = {
     await queryInterface.addConstraint('reviews', {
       name: 'reviews_uidpid_unique',
       type: 'unique',
-      fields: ['userId', 'productId']
+      fields: ['UserId', 'ProductId']
     });
 
     //purchases
     await queryInterface.addConstraint('purchases', {
       name: 'purchases_userId_fkey',
       type: 'foreign key',
-      fields: ['userId'],
+      fields: ['UserId'],
       references: {
         table: 'users',
         field: 'id'
@@ -74,7 +74,7 @@ module.exports = {
     await queryInterface.addConstraint('purchaseitems', {
       name: 'purchaseitems_purchaseId_fkey',
       type: 'foreign key',
-      fields: ['purchaseId'],
+      fields: ['PurchaseId'],
       references: {
         table: 'purchases',
         field: 'id'
@@ -84,7 +84,7 @@ module.exports = {
     await queryInterface.addConstraint('purchaseitems', {
       name: 'purchaseitems_productId_fkey',
       type: 'foreign key',
-      fields: ['productId'],
+      fields: ['ProductId'],
       references: {
         table: 'products',
         field: 'id'

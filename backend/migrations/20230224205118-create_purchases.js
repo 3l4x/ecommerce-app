@@ -17,7 +17,7 @@ module.exports = {
         type: DataTypes.DATE,
         allowNull: false
       },
-      userId:{
+      UserId:{
         type: DataTypes.INTEGER,
         references: {
           model : 'users',

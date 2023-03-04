@@ -17,14 +17,14 @@ module.exports = {
       reviewBody: {
         type: DataTypes.TEXT,
       },
-      userId: {
+      UserId: {
         type: DataTypes.INTEGER,
         references: {
           model: 'users',
           key: 'id'
         }
       },
-      productId: {
+      ProductId: {
         type: DataTypes.INTEGER,
         references: {
           model: 'products',

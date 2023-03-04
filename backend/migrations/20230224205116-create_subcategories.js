@@ -13,7 +13,7 @@ module.exports = {
       },
       description: DataTypes.STRING,
       imgPath: DataTypes.STRING,
-      categoryId: {
+      CategoryId: {
         type: DataTypes.INTEGER,
         references: {
           model: 'categories',

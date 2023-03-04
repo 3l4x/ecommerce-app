@@ -15,14 +15,14 @@ module.exports = {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-      purchaseId: {
+      PurchaseId: {
         type: DataTypes.INTEGER,
         references:{
           model: 'purchases',
           key: 'id'
         }
       },
-      productId: {
+      ProductId: {
         type: DataTypes.INTEGER,
         references:{
           model: 'products',

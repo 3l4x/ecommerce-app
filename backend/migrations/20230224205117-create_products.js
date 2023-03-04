@@ -24,12 +24,12 @@ module.exports = {
         allowNull: false
       },
 
-      subcategoryId: {
+      SubcategoryId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'subcategories',
-          Key: 'id'
+          key: 'id'
         }
       }
 
