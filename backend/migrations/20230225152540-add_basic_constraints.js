@@ -13,7 +13,7 @@ module.exports = {
         table: 'categories',
         field: 'id',
       },
-      onDelete: 'RESTRICT',
+      onDelete: 'SET NULL',
     });
 
     //products
@@ -97,13 +97,13 @@ module.exports = {
   async down(queryInterface, _) {
     //! this needs fix :/
     logger([
-      () => queryInterface.removeConstraint('subcategories', 'subcategories_categoryId_fkey'),
-      () => queryInterface.removeConstraint('products', 'products_subcategoryId_fkey'),
+      () => queryInterface.removeConstraint('purchaseitems', 'purchaseitems_purchaseId_fkey'),
+      () => queryInterface.removeConstraint('purchaseitems', 'purchaseitems_productId_fkey'),
+      () => queryInterface.removeConstraint('purchases', 'purchases_userId_fkey'),
       () => queryInterface.removeConstraint('reviews', 'reviews_userId_fkey'),
       () => queryInterface.removeConstraint('reviews', 'reviews_productId_fkey'),
       () => queryInterface.removeConstraint('reviews', 'reviews_uidpid_unique'),
-      () => queryInterface.removeConstraint('purchases', 'purchases_userId_fkey'),
-      () => queryInterface.removeConstraint('purchaseitems', 'purchaseitems_purchaseId_fkey'),
-      () => queryInterface.removeConstraint('purchaseitems', 'purchaseitems_productId_fkey')]);
+      () => queryInterface.removeConstraint('products', 'products_subcategoryId_fkey'),
+      () => queryInterface.removeConstraint('subcategories', 'subcategories_categoryId_fkey'),]);
   }
 };
