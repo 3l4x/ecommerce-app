@@ -1,6 +1,6 @@
 const express = require('express');
-const app = express();
-const graphqlServer = require('./graphql/graphqlServer');
+const app = express();/* 
+const graphqlServer = require('./graphql/graphqlServer'); */
 
 //middlewares
 app.use(express.json());
@@ -11,8 +11,8 @@ const authRouter = require('./routers/authRouter');
 app.use('/api/auth', authRouter);
 
 //graphql
+const graphqlServer = require('./schemas/graphql/public/index');
 app.use('/api/graphql', graphqlServer)
-
 
 //TODO fix error handler middleware
 app.use((err, req, res, next) => {
