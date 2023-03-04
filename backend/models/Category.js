@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         imgPath: DataTypes.STRING,
     }, {
         sequelize,
+        timestamps: false,
         modelName: 'Category'
     })
     return Category;
