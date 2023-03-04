@@ -1,13 +1,18 @@
 const { makeExecutableSchema } = require('@graphql-tools/schema');
-var { graphqlHTTP } = require('express-graphql');
+const { graphqlHTTP } = require('express-graphql');
+const db = require('../../../models/')
+
+const typeDefs = require('./typeDefs');
+const resolvers = require('./resolvers');
 
 const executableSchema = makeExecutableSchema({
-    //typeDefs,
-    //resolvers,
+    typeDefs,
+    resolvers,
 });
 
 
 module.exports = graphqlHTTP({
-schema: executableSchema,
-graphiql: true,
+    schema: executableSchema,
+    graphiql: true,
+    context : db
 });
