@@ -5,9 +5,9 @@ const { logger } = require('../utils/logger');
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, _) {
-    //subcategories
-    await queryInterface.addIndex('subcategories', {
-      fields: ['categoryId'],
+    //categoryhierarchy
+    await queryInterface.addIndex('category_hierarchies', {
+      fields: ['categoryId', 'parentCategoryId'],
     });
 
 

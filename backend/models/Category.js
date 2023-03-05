@@ -3,7 +3,20 @@ module.exports = (sequelize, DataTypes) => {
     class Category extends Model {
 
         static associate(models) {
-            this.hasMany(models.Subcategory)
+
+            //category hierarchy
+            this.belongsToMany(models.Category,{
+                through: models.CategoryHierarchy,
+                as: 'parentCategories',
+                foreignKey: 'categoryId',
+                otherKey: 'parentCategoryId'
+            })
+            this.belongsToMany(models.Category,{
+                through: models.CategoryHierarchy,
+                as: 'childCategories',
+                foreignKey: 'parentCategoryId',
+                otherKey: 'categoryId'
+            })
         }
     }
     Category.init({

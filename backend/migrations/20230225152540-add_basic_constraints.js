@@ -3,30 +3,33 @@ const { logger } = require('../utils/logger')
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, _) {
+    //category
 
-    //subcategories
-    await queryInterface.addConstraint('subcategories', {
-      name: 'subcategories_categoryId_fkey',
+    await queryInterface.addConstraint('category_hierarchies', {
+      name: 'category_hierarchy_categoryId_fkey',
       type: 'foreign key',
-      fields: ['CategoryId'],
+      fields: ['categoryId'],
       references: {
         table: 'categories',
-        field: 'id',
-      },
-      onDelete: 'SET NULL',
-    });
-
-    //products
-    await queryInterface.addConstraint('products', {
-      name: 'products_subcategoryId_fkey',
-      type: 'foreign key',
-      fields: ['SubcategoryId'],
-      references: {
-        table: 'subcategories',
         field: 'id'
       },
-      //default behavior but I still added the constraint for fun
-      onDelete: 'SET NULL'
+      onDelete: 'CASCADE',
+      onUpdate: 'CASCADE'
+    })
+
+    //default behavior but still adding it
+    await queryInterface.addConstraint('category_hierarchies', {
+      name: 'category_hierarchy_parentCategoryId_fkey',
+      type: 'foreign key',
+      fields: ['parentCategoryId'],
+      references: {
+        table: 'categories',
+        field: 'id'
+      },
+      onDelete: 'SET NULL',
+      onUpdate: 'CASCADE'
+    })
+
     })
     //reviews
     await queryInterface.addConstraint('reviews', {
