@@ -1,16 +1,16 @@
 const typeDefs = `
     type Product {
         id: ID!,
-        title: String!,
+        name: String!,
         description: String,
         imgPath: String,
         price: Float!,
         stock: Int!,
-        subcategory : Subcategory,
+        categories : [Category],
     },
     type Query {
-        product(id : Int!) : Product
-        products : [Product]
+        getProduct(id : Int!) : Product
+        getProducts : [Product]
     },
 `;
 
@@ -18,15 +18,15 @@ const resolvers = {
     Product: {
 
         //category of subcategory is always null, fix it please
-        subcategory: async (product) => {
-            return await product.getSubcategory()
+        categories: async (product) => {
+            return await product.getCategories()
         }
     },
     Query: {
-        product: async (parent, { id }, context) => {
+        getProduct: async (parent, { id }, context) => {
             return await context.Product.findByPk(id)
         },
-        products: async (parent, args, context) => {
+        getProducts: async (parent, args, context) => {
             return await context.Product.findAll()
         }
     }

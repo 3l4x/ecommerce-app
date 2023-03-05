@@ -1,14 +1,17 @@
 const typeDefs = `
   type Category {
     id: ID!,
-    title: String!,
+    name: String!,
     description: String,
     imgPath: String,
+    childCategories : [Category],
+    parentCategories : [Category],
     products : [Product],
-    subcategories : [Subcategory]
   },
   type Query{
-    category(id: Int!) : Category
+    getCategory(id: Int!) : Category,
+    getCategories : [Category],
+    getMainCategories : [Category]
   }
 `;
 
@@ -17,13 +20,28 @@ const resolvers = {
     products : async (parent)=>{
       return await parent.getProducts();
     },
-    subcategories : async (parent)=>{
-      return await parent.getSubcategories();
+    childCategories : async (parent)=>{
+      return await parent.getChildCategories();
+    },
+    parentCategories : async (parent)=>{
+      return await parent.getParentCategories();
     },
   },
   Query : {
-    category : async (parent, {id}, context)=>{
+    //? getter with id
+    getCategory : async (parent, {id}, context)=>{
       return await context.Category.findByPk(id);
+    },
+
+    //? every category
+    getCategories : async (parent, _ , context)=>{
+      return await context.Category.findAll();
+    },
+
+    //? categories with no parentCategories
+    getMainCategories : async (parent, _ , context)=>{
+       const categories  = await context.Category.findAll({include : [{model : context.Category , as : 'parentCategories'}]});
+       return categories.filter(category=>category.parentCategories.length === 0)
     }
   }
 };
