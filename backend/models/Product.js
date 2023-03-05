@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Product.init({
-    title: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
