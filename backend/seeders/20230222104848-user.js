@@ -1,11 +1,12 @@
 'use strict';
-
 const { faker } = require('@faker-js/faker');
+
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     try {
+      //seeding users
       await queryInterface.bulkInsert('users', (() => {
         const usersBulk = [];
         for (let i = 0; i < 10; i++) {
@@ -22,13 +23,14 @@ module.exports = {
         }
         return usersBulk;
       })(), {})
-    }
-    catch (err) {
+
+    }catch (err) {
       console.log(err);
     }
   },
 
   async down(queryInterface, Sequelize) {
+    //!needs fix
     await queryInterface.bulkDelete('users', null, {});
   }
 };
