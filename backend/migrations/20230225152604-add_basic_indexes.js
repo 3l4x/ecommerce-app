@@ -10,11 +10,10 @@ module.exports = {
       fields: ['categoryId', 'parentCategoryId'],
     });
 
-
-    //products
-    await queryInterface.addIndex('products', {
-      fields: ['subcategoryId']
-    })
+    //product_category
+    await queryInterface.addIndex('product_categories', {
+      fields: ['categoryId', 'productId'],
+    });
 
     //reviews
     await queryInterface.addIndex('reviews', {
@@ -37,8 +36,11 @@ module.exports = {
   async down(queryInterface, _) {
     //! this needs fix :/
     logger([
-      () => queryInterface.removeIndex('subcategories', {
-        fields: ['categoryId'],
+      () => queryInterface.removeIndex('category_hierarchies', {
+        fields: ['categoryId', 'parentCategoryId'],
+      }),
+      () => queryInterface.removeIndex('product_categories', {
+        fields: ['categoryId', 'productId'],
       }),
       () => queryInterface.removeIndex('products', {
         fields: ['subcategoryId']

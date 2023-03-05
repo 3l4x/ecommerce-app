@@ -23,16 +23,6 @@ module.exports = {
         type: DataTypes.INTEGER,
         allowNull: false
       },
-
-      SubcategoryId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'subcategories',
-          key: 'id'
-        }
-      }
-
     });
   },
 

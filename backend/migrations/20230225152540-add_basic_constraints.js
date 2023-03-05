@@ -30,7 +30,47 @@ module.exports = {
       onUpdate: 'CASCADE'
     })
 
+
+    //products
+      //if we delete category it should delete the entire entry
+      //and cascade on update
+    await queryInterface.addConstraint('product_categories',{
+      name: 'product_categories_categoryId_fkey',
+      type : 'foreign key',
+      fields : ['categoryId'],
+      references : {
+        table : 'categories',
+        field : 'id'
+      },
+      onDelete : 'CASCADE',
+      onUpdate : 'CASCADE',
     })
+
+    //same thing with product, if product gets deleted we dont need the entry
+    await queryInterface.addConstraint('product_categories',{
+      name: 'product_categories_productId_fkey',
+      type : 'foreign key',
+      fields : ['productId'],
+      references : {
+        table : 'products',
+        field : 'id'
+      },
+      onDelete : 'CASCADE',
+      onUpdate : 'CASCADE',
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
     //reviews
     await queryInterface.addConstraint('reviews', {
       name: 'reviews_userId_fkey',
@@ -106,7 +146,10 @@ module.exports = {
       () => queryInterface.removeConstraint('reviews', 'reviews_userId_fkey'),
       () => queryInterface.removeConstraint('reviews', 'reviews_productId_fkey'),
       () => queryInterface.removeConstraint('reviews', 'reviews_uidpid_unique'),
-      () => queryInterface.removeConstraint('products', 'products_subcategoryId_fkey'),
-      () => queryInterface.removeConstraint('subcategories', 'subcategories_categoryId_fkey'),]);
+      () => queryInterface.removeConstraint('product_categories', 'product_categories_categoryId_fkey'),
+      () => queryInterface.removeConstraint('product_categories', 'product_categories_productId_fkey'),
+      () => queryInterface.removeConstraint('category_hierarchies', 'category_hierarchy_categoryId_fkey'),
+      () => queryInterface.removeConstraint('category_hierarchies', 'category_hierarchy_parentCategoryId_fkey'),
+    ]);
   }
 };
