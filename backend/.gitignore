@@ -1,0 +1,42 @@
+# Logs
+logs
+*.log
+
+#todo
+todo.txt
+
+# db
+/db
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Build files
+dist
+
+# Config files
+config/config.json
+
+# Dependency directories
+node_modules
+
+# Environment variables
+.env
+
+# IDE and editor files
+.vscode/
+.idea/
+*.code-workspace
+
+# Tests
+coverage/
+nyc_output/
+*.lcov
+
+# Temporary files
+*.swp
+*.bak
+*~
